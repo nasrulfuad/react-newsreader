@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { MAX_STORIES, STORY_INCREMENT } from "../constants";
 import { debounce } from "../utils/debounce";
+import { MAX_STORIES, STORY_INCREMENT } from "../constants";
 
 export const useInfiniteScroll = () => {
   const [isLoading, setIsLoading] = useState(false);

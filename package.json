@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/index.tsx",
+      "!src/hooks/*.tsx",
+      "!src/selectors/*.ts",
+      "!src/utils/*.ts",
+      "!src/react-app-env.d.ts",
+      "!src/setupTests.ts"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 95,

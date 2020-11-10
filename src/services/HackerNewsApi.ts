@@ -1,5 +1,5 @@
 import axios from "axios";
-import { selectFields } from "../utils/selectFields";
+import { selectFields } from "../selectors/selectFields";
 
 export type StoryType = {
   id: number;

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import React, { FC, useState, useEffect, memo } from "react";
 import moment from "moment";
-import React, { FC, useState, useEffect } from "react";
 import HackerNewsApi, { StoryType } from "../services/HackerNewsApi";
 import {
   StoryMeta,
@@ -15,7 +15,7 @@ interface Props {
 
 const initialStateStory = {} as StoryType;
 
-export const Story: FC<Props> = ({ storyId }: Props) => {
+export const Story: FC<Props> = memo(({ storyId }: Props) => {
   const [story, setStory] = useState(initialStateStory);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Story: FC<Props> = ({ storyId }: Props) => {
     );
   }, []);
 
-  return (
+  return story && story.url ? (
     <StoryWrapper data-testid="story">
       <StoryTitle>
         <a href={story.url}>{story.title}</a>
@@ -41,5 +41,5 @@ export const Story: FC<Props> = ({ storyId }: Props) => {
         </span>
       </StoryMeta>
     </StoryWrapper>
-  );
-};
+  ) : null;
+});

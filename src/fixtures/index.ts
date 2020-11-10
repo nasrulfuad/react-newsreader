@@ -10,7 +10,7 @@ export const singularStory: StoryType = {
 
 export const storyIds = [1];
 
-export const emptyStory: StoryType | object = {
+export const emptySingularStory: StoryType | object = {
   id: undefined,
   by: undefined,
   time: undefined,
