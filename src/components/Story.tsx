@@ -35,8 +35,8 @@ export const Story: FC<Props> = ({ storyId }: Props) => {
           <StoryMetaElement color="#000">By : </StoryMetaElement>
           {story.by}
         </span>
-        <span className="story__by" data-testid="story-by">
-          <StoryMetaElement color="#000">By : </StoryMetaElement>
+        <span className="story__time" data-testid="story-by">
+          <StoryMetaElement color="#000">Posted : </StoryMetaElement>
           {moment.unix(story.time).fromNow()}
         </span>
       </StoryMeta>
