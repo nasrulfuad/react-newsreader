@@ -10,4 +10,5 @@
 /client/build
 
 # Server
-/node_modules/
+/backend/node_modules
+/backend/coverage
