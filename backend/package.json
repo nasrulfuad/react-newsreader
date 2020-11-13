@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
+    "test-cov": "yarn test --coverage --watchAll=false",
     "test": "jest"
   },
   "dependencies": {
