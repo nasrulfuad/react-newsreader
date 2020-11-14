@@ -8,7 +8,6 @@
       "src/**/*.tsx",
       "!src/index.tsx",
       "!src/hooks/*.tsx",
-      "!src/selectors/*.ts",
       "!src/utils/*.ts",
       "!src/react-app-env.d.ts",
       "!src/setupTests.ts"
@@ -21,9 +20,25 @@
         "statements": 95
       }
     },
-    "coverageReporters": ["html", "text"]
+    "coverageReporters": [
+      "html",
+      "text"
+    ]
   },
   "dependencies": {
+    "@apollo/client": "^3.2.5",
+    "apollo-client": "^2.6.10",
+    "graphql": "^15.4.0",
+    "moment": "^2.29.1",
+    "react": "^17.0.1",
+    "react-apollo": "^3.1.5",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.0",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.0.3",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -31,15 +46,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
-    "@types/styled-components": "^5.1.4",
-    "axios": "^0.21.0",
-    "moment": "^2.29.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "styled-components": "^5.2.1",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+    "@types/styled-components": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
