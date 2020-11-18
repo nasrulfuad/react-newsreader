@@ -16,7 +16,7 @@ export class HackerNewsApi extends RESTDataSource {
       author: by,
       url,
       time,
-      source: "HackerNews"
+      source: "HackerNews",
     };
   }
 
@@ -31,7 +31,9 @@ export class HackerNewsApi extends RESTDataSource {
   }
 
   getArticlesByIds(articleIds: number[]) {
-    return Promise.all(articleIds.map(articleId => this.getArticle(articleId)));
+    return Promise.all(
+      articleIds.map((articleId) => this.getArticle(articleId))
+    );
   }
 
   async getAllArticles() {

@@ -16,3 +16,4 @@
 /server/node_modules
 /server/dist
 /server/coverage
+/server/src/__tests__/__snapshots__

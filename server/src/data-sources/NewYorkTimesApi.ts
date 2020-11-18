@@ -8,7 +8,7 @@ export class NewYorkTimesApi extends RESTDataSource {
       byline,
       url,
       published_date,
-      title
+      title,
     }: NewYorkTimesArticleResponse = {} as any
   ): Article {
     return {
@@ -17,7 +17,7 @@ export class NewYorkTimesApi extends RESTDataSource {
       author: byline,
       url,
       time: published_date,
-      source: "New York Times"
+      source: "New York Times",
     };
   }
 

@@ -1,9 +1,8 @@
-import { ApolloServer, gql } from "apollo-server";
+import { gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
-import { NewYorkTimesApi } from "../datasources/NewYorkTimesApi";
+import { NewYorkTimesApi } from "../data-sources/NewYorkTimesApi";
 import { getArticlePreReducerStub } from "../fixtures/newyorktimes";
-import { resolvers } from "../resolvers";
-import { typeDefs } from "../typedefs";
+import { ConstructTestServer } from "../testUtils/ConstructTestServer";
 
 const GET_ALL_ARTICLES_BY_SOURCE = gql`
   query getAllArticlesBySource($source: String!) {
@@ -18,23 +17,14 @@ const GET_ALL_ARTICLES_BY_SOURCE = gql`
   }
 `;
 
-const constructTestServer = () => {
-  const newyorktimesAPI = new NewYorkTimesApi();
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    dataSources: () => ({
-      newyorktimes: newyorktimesAPI,
-    }),
-  });
-
-  return { server, newyorktimesAPI };
-};
-
 describe("[Queries.NewYorkTimesAPI]", () => {
   it("fetches an array of articles from the NewYorkTimesApi", async () => {
-    const { server, newyorktimesAPI } = constructTestServer();
-    newyorktimesAPI.get = jest.fn(() => ({
+    const { server, dataSource } = new ConstructTestServer<NewYorkTimesApi>(
+      NewYorkTimesApi,
+      "newyorktimes"
+    );
+
+    (dataSource as any).get = jest.fn(() => ({
       results: [getArticlePreReducerStub],
     }));
 

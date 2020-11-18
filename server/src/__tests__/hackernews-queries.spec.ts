@@ -1,9 +1,8 @@
-import { ApolloServer, gql } from "apollo-server";
+import { gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
-import { HackerNewsApi } from "../datasources/HackerNewsApi";
+import { HackerNewsApi } from "../data-sources/HackerNewsApi";
 import { getArticlePreReducerStub } from "../fixtures/hackernews";
-import { resolvers } from "../resolvers";
-import { typeDefs } from "../typedefs";
+import { ConstructTestServer } from "../testUtils/ConstructTestServer";
 
 const GET_ARTICLE_BY_ID_AND_SOURCE = gql`
   query getArticleByIdAndSource($id: ID!, $source: String!) {
@@ -44,24 +43,14 @@ const GET_ALL_ARTICLES = gql`
   }
 `;
 
-const constructTestServer = () => {
-  const hackernewsAPI = new HackerNewsApi();
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    dataSources: () => ({
-      hackernews: hackernewsAPI,
-    }),
-  });
-
-  return { server, hackernewsAPI };
-};
-
 describe("[Queris.HackerNewsAPI]", () => {
   it("fetches an article from the Hackernews API", async () => {
-    const { server, hackernewsAPI } = constructTestServer();
+    const { server, dataSource } = new ConstructTestServer<HackerNewsApi>(
+      HackerNewsApi,
+      "hackernews"
+    );
 
-    hackernewsAPI.get = jest.fn(() => getArticlePreReducerStub);
+    (dataSource as any).get = jest.fn(() => getArticlePreReducerStub);
 
     const { query } = createTestClient(server);
 
@@ -74,9 +63,12 @@ describe("[Queris.HackerNewsAPI]", () => {
   });
 
   it("fetches an array of articles from the Hackernews API", async () => {
-    const { server, hackernewsAPI } = constructTestServer();
+    const { server, dataSource } = new ConstructTestServer<HackerNewsApi>(
+      HackerNewsApi,
+      "hackernews"
+    );
 
-    hackernewsAPI.get = jest.fn(() => getArticlePreReducerStub);
+    (dataSource as any).get = jest.fn(() => getArticlePreReducerStub);
 
     const { query } = createTestClient(server);
     const response = await query({
@@ -88,11 +80,15 @@ describe("[Queris.HackerNewsAPI]", () => {
   });
 
   it("fetches an array of all the articles from the HackerNews API", async () => {
-    const { server, hackernewsAPI } = constructTestServer();
+    const { server, dataSource } = new ConstructTestServer<HackerNewsApi>(
+      HackerNewsApi,
+      "hackernews"
+    );
 
-    hackernewsAPI.get = jest.fn(() => [getArticlePreReducerStub]);
+    (dataSource as any).get = jest.fn(() => [getArticlePreReducerStub]);
 
     const { query } = createTestClient(server);
+
     const response = await query({
       query: GET_ALL_ARTICLES,
     });
