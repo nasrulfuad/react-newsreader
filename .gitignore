@@ -10,10 +10,8 @@
 /client/build
 
 # Server
-/backend/node_modules
-/backend/coverage
+/server-js/node_modules
+/server-js/coverage
 
-/server/node_modules
-/server/dist
-/server/coverage
-/server/src/__tests__/__snapshots__
+/server-ts/node_modules
+/server-ts/dist
