@@ -10,8 +10,5 @@
 /client/build
 
 # Server
-/server-js/node_modules
-/server-js/coverage
-
-/server-ts/node_modules
-/server-ts/dist
+/server/node_modules
+/server/dist
