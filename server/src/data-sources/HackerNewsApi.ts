@@ -1,4 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest";
+import { Article, HackerNewsArticleResponse } from "../types";
 
 export class HackerNewsApi extends RESTDataSource {
   constructor() {
@@ -6,14 +7,16 @@ export class HackerNewsApi extends RESTDataSource {
     this.baseURL = "https://hacker-news.firebaseio.com/v0/";
   }
 
-  articleReducer({ id, by, url, time, title } = {}) {
+  articleReducer(
+    { id, by, url, time, title }: HackerNewsArticleResponse = {} as any
+  ): Article {
     return {
       id: `hn-${id}`,
       title,
       author: by,
       url,
       time,
-      source: "HackerNews",
+      source: "HackerNews"
     };
   }
 
@@ -22,22 +25,20 @@ export class HackerNewsApi extends RESTDataSource {
     return response;
   }
 
-  async getArticle(articleId) {
+  async getArticle(articleId: number) {
     const response = await this.get(`item/${articleId}.json`);
     return this.articleReducer(response);
   }
 
-  getArticlesByIds(articleIds) {
-    return Promise.all(
-      articleIds.map((articleId) => this.getArticle(articleId))
-    );
+  getArticlesByIds(articleIds: number[]) {
+    return Promise.all(articleIds.map(articleId => this.getArticle(articleId)));
   }
 
   async getAllArticles() {
     let articleIds = await this.getAllArticleIds();
     articleIds = articleIds.slice(0, 100);
     return Promise.all(
-      articleIds.map((articleId) => this.getArticle(articleId))
+      articleIds.map((articleId: number) => this.getArticle(articleId))
     );
   }
 }

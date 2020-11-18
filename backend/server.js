@@ -9,4 +9,6 @@ const server = new ApolloServer({
   dataSources: () => ({ ...dataSources })
 });
 
-server.listen().then(({ url }) => console.log(`🚀️ Server is ready at ${url}`));
+server
+  .listen()
+  .then(({ url }) => console.log(`🚀️ Server is ready at ${url}`));

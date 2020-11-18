@@ -12,3 +12,7 @@
 # Server
 /backend/node_modules
 /backend/coverage
+
+/server/node_modules
+/server/dist
+/server/coverage

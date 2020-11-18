@@ -10,7 +10,8 @@
       "!src/hooks/*.tsx",
       "!src/utils/*.ts",
       "!src/react-app-env.d.ts",
-      "!src/setupTests.ts"
+      "!src/setupTests.ts",
+      "!src/App.tsx"
     ],
     "coverageThreshold": {
       "global": {
@@ -20,10 +21,7 @@
         "statements": 95
       }
     },
-    "coverageReporters": [
-      "html",
-      "text"
-    ]
+    "coverageReporters": ["html", "text"]
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
@@ -39,6 +37,7 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
+    "@apollo/react-testing": "^4.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -52,20 +51,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-cov": "yarn test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

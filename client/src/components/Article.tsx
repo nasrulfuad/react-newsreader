@@ -4,7 +4,7 @@ import {
   ArticleMeta,
   ArticleMetaElement,
   ArticleTitle,
-  ArticleWrapper,
+  ArticleWrapper
 } from "../styles/ArticleStyles";
 
 interface Props {
@@ -19,9 +19,9 @@ export const Article: FC<Props> = memo(({ article }: Props) => {
       </ArticleTitle>
 
       <ArticleMeta>
-        <span className="article__by" data-testid="article-by">
-          <ArticleMetaElement color="#000">By : </ArticleMetaElement>
-          {article.by}
+        <span className="article__by" data-testid="article-author">
+          <ArticleMetaElement color="#000">Author : </ArticleMetaElement>
+          {article.author}
         </span>
         <span className="article__time" data-testid="article-time">
           <ArticleMetaElement color="#000">Posted : </ArticleMetaElement>

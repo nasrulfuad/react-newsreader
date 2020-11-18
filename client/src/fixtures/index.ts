@@ -6,20 +6,20 @@ export type ArticleType = {
   url?: string;
 };
 
-export const singularStory: ArticleType = {
-  id: 1,
-  by: "Nasrul Fuad",
-  time: 1535498723,
-  title: "Sample story title",
-  url: "https://google.com"
+export const allArticles = {
+  allArticles: [
+    {
+      id: 1,
+      author: "Nasrul Fuad",
+      time: 1567209822,
+      title: "This is a cool title!",
+      url: "https://google.com",
+      source: 'hackernews',
+      __typename: 'author',
+    }
+  ]
 };
 
-export const storyIds = [1];
-
-export const emptySingularStory: ArticleType | object = {
-  id: undefined,
-  by: undefined,
-  time: undefined,
-  title: undefined,
-  url: undefined
-};
+export const noArticles = {
+  allArticles: []
+}
